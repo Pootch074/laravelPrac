@@ -9,7 +9,9 @@ class Job extends Model
 {
     use HasFactory;
     protected $table = 'job_listings';
-    protected $fillable = ['employer_id', 'title', 'salary'];
+    // protected $fillable = ['employer_id', 'title', 'salary']; // Allow only these columns to be filled
+
+    protected $guarded = []; // Allow all columns to filled
 
     public function employer()
     {
