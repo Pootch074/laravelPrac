@@ -6,6 +6,16 @@ use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Models\User;
+use App\Mail\JobPosted;
+use Illuminate\Support\Facades\Mail;
+
+Route::get('test', function () {
+    Mail::to('bladsparrow74@gmail.com')->send(
+        new JobPosted()
+    );
+
+    return 'Done';
+});
 
 Route::view('/', 'home');
 
