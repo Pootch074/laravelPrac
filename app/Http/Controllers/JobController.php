@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
 use App\Models\Job;
+use App\Http\Controllers\Mail;
+use App\Http\Controllers\JobPosted;
 use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
@@ -37,6 +39,11 @@ class JobController extends Controller
             'salary' => request('salary'),
             'employer_id' => 1
         ]);
+
+        Mail::to('bladsparrow74@gmail.com')->send(
+            new JobPosted()
+        );
+
         return redirect('/jobs');
     }
     public function edit(Job $job)
